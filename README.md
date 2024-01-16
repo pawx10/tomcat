@@ -1,3 +1,3 @@
 git clone url
 
-sudo chmo +x script.sh
+sudo chmod +x script.sh
