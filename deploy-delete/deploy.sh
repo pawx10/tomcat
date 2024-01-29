@@ -13,7 +13,7 @@ STACK_NAME=tomcat
 EC2_INSTANCE_TYPE=t2.medium
 
 aws cloudformation deploy \
---template-file apache-tomcat-daweb/stack-yaml/main.yml \
+--template-file tomcat/script_ubuntu/ubuntu.yml \
 --stack-name $STACK_NAME \
 --capabilities CAPABILITY_NAMED_IAM \
 --no-fail-on-empty-changeset \
