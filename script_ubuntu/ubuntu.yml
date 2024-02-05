@@ -260,7 +260,7 @@ Resources:
           # Compilar la aplicación en formato WAR
           ./gradlew war
           # Mover el archivo WAR a la carpeta de aplicaciones de Tomcat
-          mv build/libs/*.war /opt/tomcat/webapps/Pablo.war
+          mv build/libs/holamundo-0.0.1-SNAPSHOT-plain.war /opt/tomcat/webapps/holamundo-0.0.1-SNAPSHOT-plain.war
           # Devolver la ruta de la aplicación instalada
           echo "La ruta de la aplicación instalada es: /opt/tomcat/webapps/Pablo.war"
 
