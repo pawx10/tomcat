@@ -251,21 +251,23 @@ Resources:
           systemctl enable tomcat
 
           ufw allow 8080
-          apt install git -y
 
-          # Clonar la aplicación Java desde GitHub
-          cd /tmp
-          git clone https://github.com/DavidHormigoRamirez/springholamundo.git
-          cd springholamundo
-          # Compilar la aplicación en formato WAR
-          systemctl stop tomcat
-          chmod +x gradlew
-          ./gradlew war
-          # Mover el archivo WAR a la carpeta de aplicaciones de Tomcat
-          mv build/libs/holamundo-0.0.1-SNAPSHOT-plain.war /opt/tomcat/webapps/holamundo-0.0.1-SNAPSHOT-plain.war
-          # Devolver la ruta de la aplicación instalada
-          echo "La ruta de la aplicación instalada es: /opt/tomcat/webapps/Pablo.war"
+           systemctl stop tomcat
+           cd /tmp
+           mkdir miapp
+           cd miapp
+           git clone https://github.com/DavidHormigoRamirez/springholamundo.git
+           cd springholamundo
+           chmod +x gradlew
+           ./gradlew war
+           mv build/libs/holamundo-0.0.1-SNAPSHOT-plain.war /opt/tomcat/webapps/holamundo-0.0.1-SNAPSHOT-plain.war
+            
+            systemctl start tomcat
+
+        
           
+          
+
 
           # Esta tiene que serla ultima instrucción
           /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
