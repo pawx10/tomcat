@@ -251,6 +251,19 @@ Resources:
           systemctl enable tomcat
 
           ufw allow 8080
+          apt install git -y
+
+          # Clonar la aplicación Java desde GitHub
+          cd /tmp
+          git clone https://github.com/DavidHormigoRamirez/springholamundo.git
+          cd springholamundo
+          # Compilar la aplicación en formato WAR
+          ./gradlew war
+          # Mover el archivo WAR a la carpeta de aplicaciones de Tomcat
+          mv build/libs/*.war /opt/tomcat/webapps/Pablo.war
+          # Devolver la ruta de la aplicación instalada
+          echo "La ruta de la aplicación instalada es: /opt/tomcat/webapps/Pablo.war"
+
 
           # Esta tiene que serla ultima instrucción
           /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
@@ -275,3 +288,5 @@ Resources:
       Tags:
         - Key: Name
           Value: !Ref AWS::StackName
+
+          
